@@ -105,16 +105,16 @@ function startLift(targetFloor){
       for(let i=0;i<selectLift.length;i++){
            lifts.push(...selectLift);
       }
-//     const lifts = Array.from(document.getElementsByClassName("lift"))
-    const nonBusyLift = lifts.filter(lift => !lift.classList.contains('occupied'))
+
+    const freeLift = lifts.filter(lift => !lift.classList.contains('occupied'))
     let distance = null;
 
-    if (nonBusyLift.length != 0) { //If non busy lifts exist start them else call function agian after interval
-        for (i = 0; i < nonBusyLift.length; i++) {
-            const floorDistance = Math.abs(targetFloor - Number(nonBusyLift[i].dataset.floor))
+    if (freeLift.length != 0) { //If non busy lifts exist start them else call function agian after interval
+        for (i = 0; i < freeLift.length; i++) {
+            const floorDistance = Math.abs(targetFloor - Number(freeLift[i].dataset.floor))
             if (distance === null) {
                 distance = floorDistance;
-                liftAvailable = nonBusyLift[i]
+                liftAvailable = freeLift[i]
             }
         }
         liftStatus(targetFloor, liftAvailable, distance)
