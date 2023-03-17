@@ -12,7 +12,8 @@
   }
   
   label {
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    color: white;
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -20,6 +21,8 @@
   
   input {
     font-size: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
   }
   
   .details-section {

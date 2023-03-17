@@ -114,7 +114,7 @@ function startLift(targetFloor){
             const floorDistance = Math.abs(targetFloor - Number(freeLift[i].dataset.floor))
             if (distance === null) {
                 distance = floorDistance;
-                liftAvailable = freeLift[i]
+                liftAvailable = freeLift[i];
             }
         }
         liftStatus(targetFloor, liftAvailable, distance)
