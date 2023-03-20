@@ -122,7 +122,7 @@
   } */
 
    .right-door {
-    background-color: #FA7070;
+    background-color: yellow;
     content: '';
     position: absolute;
     width: 49%;
