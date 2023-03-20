@@ -163,7 +163,7 @@ function LiftStatus(targetFloor, selectedLift, distance){
         setTimeout(()=>{
             selectedLift.children[0].style.transform="translateX(-100%)";
             selectedLift.children[1].style.transform="translateX(100%)"
-        },distance*1000 + 3000)
+        },distance * 2000 + 2000)
 
         // setTimeout(() => {
         //     selectedLift.classList.add('door')
@@ -174,33 +174,34 @@ function LiftStatus(targetFloor, selectedLift, distance){
                 selectedLift.children[0].style.transform="none";
                 selectedLift.children[1].style.transform="none"
                 // selectedLift.classList.remove("busy");
-            },distance*1000 + 4000)
+            },distance*2000 + 4000)
 
             setTimeout(()=>{
                  selectedLift.classList.remove("busy")
-            },distance*1000+7000)
+            },distance*2000 + 7000)
         // }
         // )
 
     } 
     else {
         // selectedLift.classList.add("door");
+        selectedLift.classList.add("busy");
           setTimeout(()=>{
             selectedLift.children[0].style.transform="translateX(-100%)";
             selectedLift.children[1].style.transform="translateX(100%)"
-        },distance*1000+1000)
+        },distance*2000+1000)
 
-        selectedLift.classList.add("busy");
+      
         setTimeout(() => {
             // selectedLift.classList.remove("door");
             selectedLift.children[0].style.transform="none";
             selectedLift.children[1].style.transform="none"
             // selectedLift.classList.remove("busy");
-        },distance*1000+4000);
+        },distance*2000 + 4000);
 
         setTimeout(()=>{
              selectedLift.classList.remove('busy');
-        },distance*1000+7000);
+        },distance*2000 + 7000);
     }
 }
 function MoveLift(clickedFloor){
