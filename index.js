@@ -118,10 +118,7 @@ function LiftStatus(targetFloor, selectedLift, distance){
 
     setTimeout(()=>{
       selectedLift.classList.remove("busy");
-      // const nextFloor=floorArr[0];
-      // if(nextFloor!==undefined){
-      //   MoveLift();
-      // }
+     
     },distance*2000 + 7000)
    
 
@@ -140,10 +137,7 @@ function LiftStatus(targetFloor, selectedLift, distance){
 
     setTimeout(()=>{
       selectedLift.classList.remove('busy');
-      // const nextFloor=floorArr[0];
-      // if(nextFloor!==undefined){
-      //   MoveLift();
-      // }
+      
     },distance*2000 + 7000);
   }
 }
