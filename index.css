@@ -12,7 +12,7 @@
   }
   
   label {
-    /* color: var(--primary-color); */
+   
     color: white;
     font-size: 18px;
     font-weight: 500;
@@ -21,13 +21,13 @@
   
   input {
     font-size: 20px;
-    border: 1px solid red;
+    
     border-radius: 5px;
   }
   
   .details-section {
     color: #FA7070;
-    border: 2px solid red;
+  
     text-align: center;
     margin-top: auto;
     margin-top: 70px;
@@ -46,7 +46,7 @@
     border-radius: 5px;
     font-size: 17px;
     cursor: pointer;
-    border: px solid red;
+    
   }
   
   h3 {
@@ -62,7 +62,7 @@
     
   }
   @media (max-width: 768px) {
-    /* adjust position for smaller screens */
+   
     h3 {
       right: auto;
       left: 50%;
@@ -74,18 +74,10 @@
     display: flex;
     
     gap: 50px;
-    /* align-items: flex-end; */
+   
     position: relative;
-    border: 1px solid green;
-    
   }
-  .floor-Number{
-    border: 1px solid red;
-    /* margin-right: 0px !important; */
-    
-  }
-  
-  
+
   .floor {
     height: 130px;
     border-bottom: 1px solid #ffffff;
@@ -97,7 +89,7 @@
     width: 6.5vw;
     height: 14vh;
     position: relative;
-    /* border: 2px solid red; */
+    
   }
   @media  (max-width: 768px){
        .lift{
@@ -126,7 +118,7 @@
     color: #DFF6FF;
     margin: 45px 0 1vw 0;
     border-radius: 5px;
-    border: 2px solid red;
+   
     width: 11vw;
   }
   
@@ -136,14 +128,6 @@
     gap: 40px;
   }
   
-  /* .lift::before {
-    background-color: #0a243d;
-    content: '';
-    position: absolute;
-    width: 49%;
-    height: 100%;
-  
-  } */
  
    .left-door {
     background-color: #0a243d;
@@ -154,15 +138,6 @@
     transition:transform 2s linear;
   }
  
-  /* .lift::after {
-    background-color: #FA7070;
-    content: '';
-    position: absolute;
-    width: 49%;
-    height: 100%;
-    left: 50%;
-    
-  } */
 
    .right-door {
     background-color: #FA7070;
@@ -175,34 +150,4 @@
     
   } 
   
-  /* .door::before {
-    animation: left-door 6000ms linear;
-  }
-  
-  .door::after {
-    animation: right-door 6000ms linear;
-  } */
-  /* .left-door{
-     animation:left-door
-  } */
-  
-   /* @keyframes left-door {
-    50% {
-        transform: translateX(-100%);
-    }
-  
-    100% {
-        transform: translateX(0%);
-    }
-  } 
-  
-  @keyframes right-door {
-    50% {
-        transform: translateX(100%);
-    }
-  
-    100% {
-        transform: translateX(0%);
-    }
-  }  */
-     
+ 
