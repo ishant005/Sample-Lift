@@ -27,6 +27,7 @@
   
   .details-section {
     color: #FA7070;
+    border: 2px solid red;
     text-align: center;
     margin-top: auto;
     margin-top: 70px;
@@ -40,31 +41,50 @@
     margin-top: 15px;
     background: #3ABFF8;
     border: none;
-    padding: 10px 16px;
+    padding: 1.2vh 1vw;
     color: white;
     border-radius: 5px;
     font-size: 17px;
     cursor: pointer;
+    border: px solid red;
   }
   
   h3 {
-    margin: 0;
+   
     padding: 0;
     color: #ffffffb7;
     position: absolute;
-    right: 50%;
-    left: 50%;
-    font-size: 50px;
+    right: 20%;
+    left: 80%;
+    font-size: 60px;
     width: max-content;
-    opacity: 0.5
+    opacity: 0.5;
+    
+  }
+  @media (max-width: 768px) {
+    /* adjust position for smaller screens */
+    h3 {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
   
   .floor-container {
     display: flex;
+    
     gap: 50px;
-    align-items: flex-end;
+    /* align-items: flex-end; */
     position: relative;
+    border: 1px solid green;
+    
   }
+  .floor-Number{
+    border: 1px solid red;
+    /* margin-right: 0px !important; */
+    
+  }
+  
   
   .floor {
     height: 130px;
@@ -74,23 +94,46 @@
   .lift {
     background-color: rgb(46, 5, 48);
     border: 1px solid #C6EBC5;
-    width: 80px;
-    height: 80px;
+    width: 6.5vw;
+    height: 14vh;
     position: relative;
+    /* border: 2px solid red; */
   }
-  
+  @media  (max-width: 768px){
+       .lift{
+        width:5.9vw;
+       }
+  }
+  @media (max-width:480px){
+     .lift{
+       width: 5vw;
+     }
+     
+  }
+  @media (max-width:540px){
+       button{
+         font-size: 10px;
+       }
+      }
+  @media (max-width:360px){
+     .lift{
+      width: 4.5vw;
+     }
+  }
   .call-lift-btn {
     border: none;
-    background-color: #3ABFF8;
+    background-color: #FA7070;;
     color: #DFF6FF;
-    margin: 45px 0 8px 0;
+    margin: 45px 0 1vw 0;
     border-radius: 5px;
+    border: 2px solid red;
+    width: 11vw;
   }
   
   .total-lifts {
     display: flex;
     flex-wrap: no-wrap;
-    gap: 30px;
+    gap: 40px;
   }
   
   /* .lift::before {
@@ -143,7 +186,7 @@
      animation:left-door
   } */
   
-   @keyframes left-door {
+   /* @keyframes left-door {
     50% {
         transform: translateX(-100%);
     }
@@ -161,5 +204,5 @@
     100% {
         transform: translateX(0%);
     }
-  } 
+  }  */
      

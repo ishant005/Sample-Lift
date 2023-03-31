@@ -2,11 +2,21 @@ const submitBtn = document.querySelector(".submit-btn");
 const Floors = document.querySelector(".floor-num");
 const Lifts = document.querySelector(".lift-num");
 const contentDiv = document.querySelector(".content-box");
+const FloorInput=document.querySelector(".floor-num");
+const FloorLabel=document.querySelector(".floor-label");
+const liftInput=document.querySelector(".lift-num");
+const LiftLabel=document.querySelector(".lift-label");
+
 
 submitBtn.addEventListener("click", () => {
     numFloor = Number(Floors.value)
-    numLift = Number(Lifts.value)
+    numLift = Number(Lifts.value);
 
+   FloorInput.style.display="none";
+   liftInput.style.display="none";
+   FloorLabel.style.display="none";
+   LiftLabel.style.display="none";
+   submitBtn.style.display="none";
     contentDiv.innerHTML = "";
 
     const allLifts = document.createElement('div')
@@ -26,6 +36,7 @@ submitBtn.addEventListener("click", () => {
         const callLift = document.createElement('button')
         const floorNumber = document.createElement('h3')
         floorNumber.textContent = `Floor ${i}`
+        floorNumber.classList.add('floor-Number');
         callLift.textContent = "Button"
         callLift.classList.add('call-lift-btn')
         callLift.setAttribute('data-floor', i)
@@ -61,175 +72,110 @@ submitBtn.addEventListener("click", () => {
     }
 })
 
-// let tempFloorCall;
-// addEventListener('click', (e) => {
-//     if (e.target.classList.contains("call-lift-btn")) {
-//         const selectedFloor = Number(e.target.dataset.floor)
-//         console.log("selected"+selectedFloor);
-//         //So that two lifts cannot be called to the same floor on the same time
-//         if (selectedFloor != tempFloorCall) {
-//             tempFloorCall = selectedFloor;
-//             startLift(selectedFloor)
-//         }
-//     }
-// })
-
-// function liftStatus(targetFloor, selectedLift, distance){
-//     console.log("floor : ", targetFloor)
-//     console.log("lift : ", selectedLift)
-
-//     const liftOnFloor = Number(selectedLift.dataset.floor);
-//     if (liftOnFloor !== targetFloor) {
-//         selectedLift.style.transition = `all ${distance * 2}s ease-in-out`;
-//         selectedLift.style.transform = `translateY(${-130 * (targetFloor - 1)}px)`;
-//         selectedLift.dataset.floor = targetFloor;
-//         selectedLift.classList.add("occupied");
-
-//         setTimeout(() => {
-//             selectedLift.classList.add('door')
-//         }, distance * 2500)
-
-//         selectedLift.addEventListener('transitionend', (e) => {
-//             setTimeout(() => {
-//                 selectedLift.classList.remove("door");
-//                 selectedLift.classList.remove("occupied");
-//             }, 6000)
-//         })
-
-//     } 
-//     else {
-//         selectedLift.classList.add("door");
-//         selectedLift.classList.add("occupied");
-//         setTimeout(() => {
-//             selectedLift.classList.remove("door");
-//             selectedLift.classList.remove("occupied");
-//         }, 6000);
-//     }
-// }
 
 
-// function startLift(targetFloor){
-   
-//     let lifts=[];
-//     let liftAvailable;
-//           let selectLift=document.getElementsByClassName('lift');
-//       for(let i=0;i<selectLift.length;i++){
-//            lifts.push(...selectLift);
-//       }
 
-//     const freeLift = lifts.filter(lift => !lift.classList.contains('occupied'))
-//     let distance = null;
-
-//     if (freeLift.length != 0) { //If non busy lifts exist start them else call function agian after interval
-//         for (i = 0; i < freeLift.length; i++) {
-//             const floorDistance = Math.abs(targetFloor - Number(freeLift[i].dataset.floor))
-//             if (distance === null) {
-//                 distance = floorDistance;
-//                 liftAvailable = freeLift[i];
-//             }
-//         }
-//         liftStatus(targetFloor, liftAvailable, distance)
-//     } else {
-//         setTimeout(() => {
-//             startLift(targetFloor)
-//         }, 1000)
-//     }
-
-// }
 let x=0;
+let floorArr=[];
 document.addEventListener("click",(e)=>{
-      if(e.target.classList.contains("call-lift-btn")){
-        const selectedFloor = Number(e.target.dataset.floor)
-        if(selectedFloor===x){
-            return;
-        }
-        else{
-             MoveLift(selectedFloor);
-        }
-        x=selectedFloor;
-      }
-})
-function LiftStatus(targetFloor, selectedLift, distance){
-    console.log("floor : ", targetFloor)
-    console.log("lift : ", selectedLift)
+  if(e.target.classList.contains("call-lift-btn")){
+    const selectedFloor = Number(e.target.dataset.floor)
 
-    const liftOnFloor = Number(selectedLift.dataset.floor);
-    if (liftOnFloor !== targetFloor) {
-        selectedLift.style.transition = `all ${distance * 2}s ease-in-out`;
-        selectedLift.style.transform = `translateY(${-130 * (targetFloor - 1)}px)`;
-        selectedLift.dataset.floor = targetFloor;
-        selectedLift.classList.add("busy");
-
-        setTimeout(()=>{
-            selectedLift.children[0].style.transform="translateX(-100%)";
-            selectedLift.children[1].style.transform="translateX(100%)"
-        },distance * 2000 + 2000)
-
-        // setTimeout(() => {
-        //     selectedLift.classList.add('door')
-        // }, distance * 2500)
-
-        // selectedLift.addEventListener('transitionend', (e) => {
-            setTimeout(() => {
-                selectedLift.children[0].style.transform="none";
-                selectedLift.children[1].style.transform="none"
-                // selectedLift.classList.remove("busy");
-            },distance*2000 + 4000)
-
-            setTimeout(()=>{
-                 selectedLift.classList.remove("busy")
-            },distance*2000 + 7000)
-        // }
-        // )
-
-    } 
-    else {
-        // selectedLift.classList.add("door");
-        selectedLift.classList.add("busy");
-          setTimeout(()=>{
-            selectedLift.children[0].style.transform="translateX(-100%)";
-            selectedLift.children[1].style.transform="translateX(100%)"
-        },distance*2000+1000)
-
-      
-        setTimeout(() => {
-            // selectedLift.classList.remove("door");
-            selectedLift.children[0].style.transform="none";
-            selectedLift.children[1].style.transform="none"
-            // selectedLift.classList.remove("busy");
-        },distance*2000 + 4000);
-
-        setTimeout(()=>{
-             selectedLift.classList.remove('busy');
-        },distance*2000 + 7000);
+    if(selectedFloor===x){
+      return;
     }
-}
-function MoveLift(clickedFloor){
-      let lifts=[];
-  
-      let selectLift=document.getElementsByClassName('lift');
-      for(let i=0;i<selectLift.length;i++){
-         lifts.push(...selectLift);
-        }
-        
-        const freeLift = lifts.filter(lift => !lift.classList.contains('busy'))
-        let distance = null;
+    else{
+      floorArr.push(selectedFloor);
+      if(floorArr.length>=1){
+        MoveLift()
+      }
+    }
+    x=selectedFloor;
+  }
+});
 
-        if(freeLift.length!=0){
-        for(i=0;i<freeLift.length;i++){
-              const floorDistance=Math.abs(clickedFloor-Number(freeLift[i].dataset.floor))
-               if(distance==null || floorDistance<=distance){
-               distance=floorDistance;
-               liftAvailable=freeLift[i];
-            }
-        }
-            LiftStatus(clickedFloor,liftAvailable,distance)
-        }
-        else{
-               setTimeout(()=>{
-                 MoveLift(clickedFloor)
-               },1000);
-        }
+function LiftStatus(targetFloor, selectedLift, distance){
+  console.log("floor : ", targetFloor)
+  console.log("lift : ", selectedLift)
 
-}
+  const liftOnFloor = Number(selectedLift.dataset.floor);
+  if (liftOnFloor !== targetFloor) {
+    selectedLift.style.transition = `all ${distance * 2}s ease-in-out`;
+    selectedLift.style.transform = `translateY(${-130 * (targetFloor - 1)}px)`;
+    selectedLift.dataset.floor = targetFloor;
+
+    selectedLift.classList.add("busy");
+
+    setTimeout(()=>{
+      selectedLift.children[0].style.transform="translateX(-100%)";
+      selectedLift.children[1].style.transform="translateX(100%)"
+    },distance * 2000 + 2000)
+
+    setTimeout(() => {
+      selectedLift.children[0].style.transform="none";
+      selectedLift.children[1].style.transform="none"
+    },distance*2000 + 4000)
+
+    setTimeout(()=>{
+      selectedLift.classList.remove("busy");
+      // const nextFloor=floorArr[0];
+      // if(nextFloor!==undefined){
+      //   MoveLift();
+      // }
+    },distance*2000 + 7000)
    
+
+  } 
+  else {
+    selectedLift.classList.add("busy");
+    setTimeout(()=>{
+      selectedLift.children[0].style.transform="translateX(-100%)";
+      selectedLift.children[1].style.transform="translateX(100%)"
+    },distance*2000+1000)
+
+    setTimeout(() => {
+      selectedLift.children[0].style.transform="none";
+      selectedLift.children[1].style.transform="none"
+    },distance*2000 + 4000);
+
+    setTimeout(()=>{
+      selectedLift.classList.remove('busy');
+      // const nextFloor=floorArr[0];
+      // if(nextFloor!==undefined){
+      //   MoveLift();
+      // }
+    },distance*2000 + 7000);
+  }
+}
+
+function MoveLift(){
+  let lifts=[];
+
+  let selectLift=document.getElementsByClassName('lift');
+  for(let i=0;i<selectLift.length;i++){
+    lifts.push(...selectLift);
+  }
+  const clickedFloor=floorArr[0];
+
+  const freeLift = lifts.filter(lift => !lift.classList.contains('busy'))
+  let distance = null;
+
+  if(freeLift.length>=1){
+    for(i=0;i<freeLift.length;i++){
+      const floorDistance=Math.abs(clickedFloor-(freeLift[i].dataset.floor))
+      console.log("floordistance"+floorDistance)
+      if(distance==null || floorDistance<=distance){
+        distance=floorDistance;
+        liftAvailable=freeLift[i];
+      }
+    }
+    LiftStatus(clickedFloor,liftAvailable,distance);
+    floorArr.shift();
+    console.log("floorArr"+floorArr[i]);
+  }
+  else{
+    setTimeout(()=>{
+      MoveLift()
+    },1000);
+  }
+}
