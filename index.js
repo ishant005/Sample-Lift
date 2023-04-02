@@ -28,23 +28,44 @@ submitBtn.addEventListener("click", () => {
         const floorContainer = document.createElement('div')
         const floor = document.createElement('div');
         const buttonContainer = document.createElement('div')
+        buttonContainer.classList.add('button-container');
 
         floorContainer.classList.add('floor-container')
         floor.classList.add('floor')
         floor.setAttribute('data-floor', i)
 
-        const callLift = document.createElement('button')
+        const upLiftButton = document.createElement('button');
+        const downLiftButton=document.createElement('button')
         const floorNumber = document.createElement('h3')
         floorNumber.textContent = `Floor ${i}`
         floorNumber.classList.add('floor-Number');
-        callLift.textContent = "Button"
-        callLift.classList.add('call-lift-btn')
-        callLift.setAttribute('data-floor', i)
-        buttonContainer.appendChild(callLift)
+
+        upLiftButton.textContent = "UP"
+        upLiftButton.classList.add('call-lift-up-btn')
+        upLiftButton.setAttribute('data-floor', i)
+
+        downLiftButton.textContent="Down"
+        downLiftButton.classList.add('call-lift-down-btn')
+        downLiftButton.setAttribute('data-floor',i)
+         
+        // if(i==1){
+        //   buttonContainer.appendChild(upLiftButton)
+        // }
+        // if(i==numFloor){
+        //   buttonContainer.appendChild(downLiftButton)
+        // }
+        buttonContainer.appendChild(upLiftButton)
+        buttonContainer.appendChild(downLiftButton)
 
         floorContainer.appendChild(floorNumber)
         floorContainer.appendChild(buttonContainer)
         if (i === 1) floorContainer.append(allLifts)
+        if(i==1){
+          upLiftButton.style.display="none"
+        }
+        if(i==numFloor){
+          downLiftButton.style.display="none";
+        }
         floor.appendChild(floorContainer)
         floors.unshift(floor)
     }
@@ -78,7 +99,23 @@ submitBtn.addEventListener("click", () => {
 let x=0;
 let floorArr=[];
 document.addEventListener("click",(e)=>{
-  if(e.target.classList.contains("call-lift-btn")){
+  if(e.target.classList.contains("call-lift-up-btn")){
+    const selectedFloor = Number(e.target.dataset.floor)
+
+    if(selectedFloor===x){
+      return;
+    }
+    else{
+      floorArr.push(selectedFloor);
+      if(floorArr.length>=1){
+        MoveLift()
+      }
+    }
+    x=selectedFloor;
+  }
+});
+document.addEventListener("click",(e)=>{
+  if(e.target.classList.contains("call-lift-down-btn")){
     const selectedFloor = Number(e.target.dataset.floor)
 
     if(selectedFloor===x){
@@ -128,17 +165,17 @@ function LiftStatus(targetFloor, selectedLift, distance){
     setTimeout(()=>{
       selectedLift.children[0].style.transform="translateX(-100%)";
       selectedLift.children[1].style.transform="translateX(100%)"
-    },distance*2000+1000)
+    },1000)
 
     setTimeout(() => {
       selectedLift.children[0].style.transform="none";
       selectedLift.children[1].style.transform="none"
-    },distance*2000 + 4000);
+    }, 4000);
 
     setTimeout(()=>{
       selectedLift.classList.remove('busy');
       
-    },distance*2000 + 7000);
+    },7000);
   }
 }
 

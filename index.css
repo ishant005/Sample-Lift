@@ -112,13 +112,30 @@
       width: 4.5vw;
      }
   }
-  .call-lift-btn {
+  .button-container{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          /* border: 1px solid red; */
+  }
+  .call-lift-up-btn {
     border: none;
     background-color: #FA7070;;
     color: #DFF6FF;
-    margin: 45px 0 1vw 0;
+    /* margin: 45px 0 1vw 0; */
     border-radius: 5px;
-   
+     cursor: pointer;
+    width: 11vw;
+    /* border: 1px solid red; */
+  }
+  .call-lift-down-btn{
+    border: none;
+    background-color: #FA7070;;
+    color: #DFF6FF;
+    /* margin: 45px 0 1vw 0; */
+    border-radius: 5px;
+    cursor: pointer;
+    /* border: 1px solid green; */
     width: 11vw;
   }
   
