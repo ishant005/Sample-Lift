@@ -40,7 +40,7 @@ submitBtn.addEventListener("click", () => {
         floorNumber.textContent = `Floor ${i}`
         floorNumber.classList.add('floor-Number');
 
-        upLiftButton.textContent = "UP"
+        upLiftButton.textContent = "Up"
         upLiftButton.classList.add('call-lift-up-btn')
         upLiftButton.setAttribute('data-floor', i)
 
@@ -61,10 +61,10 @@ submitBtn.addEventListener("click", () => {
         floorContainer.appendChild(buttonContainer)
         if (i === 1) floorContainer.append(allLifts)
         if(i==1){
-          upLiftButton.style.display="none"
+          downLiftButton.style.display="none"
         }
         if(i==numFloor){
-          downLiftButton.style.display="none";
+          upLiftButton.style.display="none";
         }
         floor.appendChild(floorContainer)
         floors.unshift(floor)

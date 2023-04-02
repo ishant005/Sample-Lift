@@ -94,11 +94,13 @@
   @media  (max-width: 768px){
        .lift{
         width:5.9vw;
+        height: 10vh;
        }
   }
   @media (max-width:480px){
      .lift{
        width: 5vw;
+       height: 8vh;
      }
      
   }
@@ -110,6 +112,7 @@
   @media (max-width:360px){
      .lift{
       width: 4.5vw;
+      height: 6vh;
      }
   }
   .button-container{
