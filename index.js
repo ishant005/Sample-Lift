@@ -93,43 +93,179 @@ submitBtn.addEventListener("click", () => {
     }
 })
 
+let x = [];
+let floorArr = [];
+let liftsOnWay = [];
 
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("call-lift-up-btn")) {
+    const selectedFloor = Number(e.target.dataset.floor);
 
-
-let x=0;
-let floorArr=[];
-document.addEventListener("click",(e)=>{
-  if(e.target.classList.contains("call-lift-up-btn")){
-    const selectedFloor = Number(e.target.dataset.floor)
-
-    if(selectedFloor===x){
+    if (liftsOnWay.includes(selectedFloor)) {
+      console.log("A lift is already on the way to this floor.");
       return;
     }
-    else{
-      floorArr.push(selectedFloor);
-      if(floorArr.length>=1){
-        MoveLift()
-      }
-    }
-    x=selectedFloor;
-  }
-});
-document.addEventListener("click",(e)=>{
-  if(e.target.classList.contains("call-lift-down-btn")){
-    const selectedFloor = Number(e.target.dataset.floor)
 
-    if(selectedFloor===x){
-      return;
-    }
-    else{
-      floorArr.push(selectedFloor);
-      if(floorArr.length>=1){
-        MoveLift()
+    const liftsOnFloor = document.querySelectorAll(
+      `.lift[data-floor="${selectedFloor}"]`
+    );
+
+    if (liftsOnFloor.length > 0) {
+      openLiftDoor(liftsOnFloor[0],selectedFloor);
+      console.log("There is already a lift on this floor");
+    } else {
+      x.push(selectedFloor);
+      if (x.length >= 1) {
+        MoveLift();
       }
     }
-    x=selectedFloor;
   }
 });
+
+function MoveLift() {
+  // Code for moving the lift to the selected floor
+  // When the lift arrives, remove the floor from the x array
+  // and add it to the liftsOnWay array.
+}
+
+function openLiftDoor(lift,selectedFloor) {
+  if(lift.dataset.floor==selectedFloor){
+  lift.classList.add("busy");
+  setTimeout(() => {
+    lift.children[0].style.transform = "translateX(-100%)";
+    lift.children[1].style.transform = "translateX(100%)";
+  }, 1000);
+  setTimeout(() => {
+    lift.children[0].style.transform = "none";
+    lift.children[1].style.transform = "none";
+  }, 4000);
+  setTimeout(() => {
+    lift.classList.remove("busy");
+    const floor = lift.dataset.floor;
+    const index = liftsOnWay.indexOf(floor);
+    if (index !== -1) {
+      liftsOnWay.splice(index, 1);
+    }
+  }, 7000);
+}}
+
+
+// let x=[];;
+// let floorArr=[];
+// document.addEventListener("click",(e)=>{
+//   if(e.target.classList.contains("call-lift-up-btn")){
+//     const selectedFloor = Number(e.target.dataset.floor);
+
+//     const liftsOnFloor = document.querySelectorAll(`.lift[data-floor="${selectedFloor}"]`);
+//     if (liftsOnFloor.length > 0) {
+      
+//       // liftsOnFloor.forEach(lift => {
+//       //   lift.classList.add("busy");
+//       openLiftDoor(liftsOnFloor);
+//       // }
+//       // );
+
+//     // setTimeout(()=>{
+//     //   liftsOnFloor.children[0].style.transform="translateX(-100%)";
+//     //   liftsOnFloor.children[1].style.transform="translateX(100%)"
+//     // },1000)
+
+//     // setTimeout(() => {
+//     //   liftsOnFloor.children[0].style.transform="none";
+//     //   liftsOnFloor.children[1].style.transform="none"
+//     // },4000)
+
+//     // setTimeout(()=>{
+//     //   liftsOnFloor.forEach(lift => {
+//     //   liftsOnFloor.classList.remove("busy");
+//     //   });
+//     // },7000)
+   
+//       console.log("There is already a lift on this floor");
+//       // return;
+//     }
+//     console.log("selectedfloor"+selectedFloor);
+//     if(x.includes(selectedFloor)){
+//       console.log("x-----"+x)
+      
+//       return;
+//     }
+//     else{
+//       x.push(selectedFloor);
+//       if(x.length>=1){
+//         MoveLift()
+//       }
+//     }
+//     // x=selectedFloor;
+//   }
+// });
+// document.addEventListener("click",(e)=>{
+//   if(e.target.classList.contains("call-lift-down-btn")){
+//     const selectedFloor = Number(e.target.dataset.floor)
+
+//     if(selectedFloor===x){
+//       return;
+//     }
+//     else{
+//       floorArr.push(selectedFloor);
+//       if(floorArr.length>=1){
+//         MoveLift()
+//       }
+//     }
+//     x=selectedFloor;
+//   }
+// });
+// function openLiftDoor(lift) {
+//   lift.classList.add("busy");
+//   setTimeout(() => {
+//     lift.children[0].style.transform="translateX(-100%)";
+//     lift.children[1].style.transform="translateX(100%)";
+//   }, 1000);
+//   setTimeout(() => {
+//     lift.children[0].style.transform="none";
+//     lift.children[1].style.transform="none";
+//   }, 3000);
+//   setTimeout(() => {
+//     lift.classList.remove("busy");
+//   }, 4000);
+// }
+
+// function openLiftDoor(lift) {
+//   lift.classList.add("busy");
+//   setTimeout(() => {
+//     lift.children[0].style.transform = "translateX(-100%)";
+//     lift.children[1].style.transform = "translateX(100%)";
+//   }, 1000);
+//   setTimeout(() => {
+//     lift.children[0].style.transform = "none";
+//     lift.children[1].style.transform = "none";
+//   }, 3000);
+//   setTimeout(() => {
+//     lift.classList.remove("busy");
+//     const floor = lift.dataset.floor;
+//     const index = liftsOnWay.indexOf(floor);
+//     if (index !== -1) {
+//       liftsOnWay.splice(index, 1);
+//     }
+//   }, 4000);
+// }
+// function openLiftDoor(liftsOnFloor) {
+//   for(let i=0; i<liftsOnFloor.length; i++) {
+//     let lift = liftsOnFloor[i];
+//     lift.classList.add("busy");
+//     setTimeout(() => {
+//       lift.children[0].style.transform="translateX(-100%)";
+//       lift.children[1].style.transform="translateX(100%)";
+//     }, 1000);
+//     setTimeout(() => {
+//       lift.children[0].style.transform="none";
+//       lift.children[1].style.transform="none";
+//     }, 3000);
+//     setTimeout(() => {
+//       lift.classList.remove("busy");
+//     }, 4000);
+//   }
+// }
 
 function LiftStatus(targetFloor, selectedLift, distance){
   console.log("floor : ", targetFloor)
@@ -186,7 +322,7 @@ function MoveLift(){
   for(let i=0;i<selectLift.length;i++){
     lifts.push(...selectLift);
   }
-  const clickedFloor=floorArr[0];
+  const clickedFloor=x[0];
 
   const freeLift = lifts.filter(lift => !lift.classList.contains('busy'))
   let distance = null;
@@ -201,7 +337,7 @@ function MoveLift(){
       }
     }
     LiftStatus(clickedFloor,liftAvailable,distance);
-    floorArr.shift();
+    x.shift();
     console.log("floorArr"+floorArr[i]);
   }
   else{
