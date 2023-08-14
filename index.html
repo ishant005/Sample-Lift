@@ -5,29 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyLift</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="index.css">
+    <title> Lift Simulator</title>
 </head>
 
 <body>
-    <section class="details-section">
-        <div>
-            <label for="floor-num" class="floor-label">Enter No Of Floors:</label>
-            <input type="number" placeholder="greater than 1" class="floor-num">
+   
+<section id="header">
+    <div class="inputField">
+        <div class="floorInput">
+            <label for="floor">Enter number of floors:</label><br>
+            <input type="number" min="1" 
+            oninput="this.value = 
+            !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+            placeholder="greater than 1" id="nfloors" name="floor" placeholder="Enter "><br>
         </div>
-
-        <div>
-            <label for="lift-num" class="lift-label"style=" margin-right: 10px;">Enter No Of Lifts:</label>
-            <input type="number" placeholder="greater than 1" class="lift-num">
+        <div class="liftInput">
+            <label for="lift">Enter no of Lifts</label><br>
+            <input type="number" min="1"
+            oninput="this.value = 
+            !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+            placeholder="greater than 1" id="nlifts" name="lift" placeholder="Enter"><br>
         </div>
+       
+        <button type="button" class="btn" id="generate">
+            Submit
+        </button>
+</div>
+</section><br><br>
+
+<div class="container" id="container">
+    <div id="btn-container"></div>
+    <div id="floor-container"></div>
+</div> 
+
+    </div>
+</section>
 
 
-        <button class="submit-btn">Submit</button>
-    </section>
-    <div class="content-box"></div>
-
-
-    <script src="./index.js"></script>
 </body>
+<script src="index.js"></script>
 
 </html>
