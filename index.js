@@ -2,7 +2,32 @@
 let liftQueue=[];
 
 let generateBtn=document.getElementById("generate");
+function checkInputFloor() {
+  const numFloor = document.getElementById("nfloors");
+  const inputValue = parseInt(numFloor.value, 10);
 
+  if (inputValue < 1) {
+    alert("Value should be greater than 1");
+    numFloor.value = ""
+  }
+  else if(inputValue>7){
+    alert("Value should be less than 8")
+    numFloor.value = ""
+  }
+}
+function checkInputLift() {
+  const numLifts = document.getElementById("nlifts");
+  const inputValue = parseInt(numLifts.value, 10);
+
+  if (inputValue < 1) {
+    alert("Value should be greater than 1");
+    numLifts.value = ""
+  }
+  else if(inputValue>7){
+    alert("Value should be less than 8")
+    numLifts.value = ""
+  }
+}
 generateBtn.addEventListener("click",()=>{
     let numFloors=parseInt(document.getElementById("nfloors").value);
 
