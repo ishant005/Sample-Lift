@@ -15,16 +15,17 @@
     <div class="inputField">
         <div class="floorInput">
             <label for="floor">Enter number of floors:</label><br>
-            <input type="number" min="1" 
+            <input type="number" 
+            min="1" 
             oninput="this.value = 
-            !!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null"
+            !!this.value && Math.abs(this.value) >= 1 && Math.abs(this.value) <=7 ? Math.abs(this.value) : null"
             placeholder="greater than 1" id="nfloors" name="floor" placeholder="Enter "><br>
         </div>
         <div class="liftInput">
             <label for="lift">Enter no of Lifts</label><br>
             <input type="number" min="1"
             oninput="this.value = 
-            !!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null"
+            !!this.value && Math.abs(this.value) >= 1 && Math.abs(this.value) <= 7 ? Math.abs(this.value) : null"
             placeholder="greater than 1" id="nlifts" name="lift" placeholder="Enter"><br>
         </div>
        

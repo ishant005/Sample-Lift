@@ -8,7 +8,7 @@ generateBtn.addEventListener("click",()=>{
 
     let numLifts=parseInt(document.getElementById("nlifts").value);
    
-
+   
     if(!Number.isInteger(numFloors)||!Number.isInteger(numLifts)){
         alert("Please enter an integer value")
     }
